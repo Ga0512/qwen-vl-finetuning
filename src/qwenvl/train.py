@@ -3,6 +3,7 @@ import os
 
 os.environ["TORCH_DYNAMO_DISABLE"] = "1"
 
+import unsloth
 import torch
 from trl import SFTTrainer, SFTConfig
 
@@ -37,7 +38,6 @@ def main():
     print("Starting training...")
     trainer = SFTTrainer(
         model=model,
-        tokenizer=tokenizer,
         train_dataset=dataset,
         args=SFTConfig(
             output_dir=cfg.training.output_dir,
@@ -49,6 +49,7 @@ def main():
             bf16=cfg.training.bf16,
             logging_steps=cfg.training.logging_steps,
             remove_unused_columns=cfg.training.remove_unused_columns,
+            tokenizer=tokenizer,
         ),
     )
 
