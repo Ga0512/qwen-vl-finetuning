@@ -43,7 +43,7 @@ def main():
             output_dir=cfg.training.output_dir,
             per_device_train_batch_size=cfg.training.per_device_train_batch_size,
             gradient_accumulation_steps=cfg.training.gradient_accumulation_steps,
-            learning_rate=cfg.training.learning_rate,
+            learning_rate=float(cfg.training.learning_rate),
             num_train_epochs=cfg.training.num_train_epochs,
             fp16=cfg.training.fp16,
             bf16=cfg.training.bf16,

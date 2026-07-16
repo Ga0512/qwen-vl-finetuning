@@ -69,9 +69,21 @@ class TrainConfig:
         if "lora" in raw.get("model", {}):
             model.lora = LoraConfig(**raw["model"]["lora"])
 
+        train_kw = dict(raw.get("training", {}))
+        if "learning_rate" in train_kw:
+            train_kw["learning_rate"] = float(train_kw["learning_rate"])
+        if "num_train_epochs" in train_kw:
+            train_kw["num_train_epochs"] = int(train_kw["num_train_epochs"])
+        if "per_device_train_batch_size" in train_kw:
+            train_kw["per_device_train_batch_size"] = int(train_kw["per_device_train_batch_size"])
+        if "gradient_accumulation_steps" in train_kw:
+            train_kw["gradient_accumulation_steps"] = int(train_kw["gradient_accumulation_steps"])
+        if "logging_steps" in train_kw:
+            train_kw["logging_steps"] = int(train_kw["logging_steps"])
+
         return cls(
             model=model,
             data=DataConfig(**raw.get("data", {})),
-            training=TrainingConfig(**raw.get("training", {})),
+            training=TrainingConfig(**train_kw),
             merge=MergeConfig(**raw.get("merge", {})),
         )
