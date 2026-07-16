@@ -20,15 +20,18 @@ def prepare_dataset(
                 {
                     "role": "user",
                     "content": [
-                        {"type": "image", "image": sample[image_column]},
                         {"type": "text", "text": instruction},
+                        {"type": "image"},
                     ],
                 },
                 {
                     "role": "assistant",
-                    "content": [{"type": "text", "text": sample[text_column]}],
+                    "content": [
+                        {"type": "text", "text": sample[text_column]},
+                    ],
                 },
             ],
+            "images": [sample[image_column]],
         }
 
     dataset = dataset.map(convert_to_conversation, remove_columns=dataset.column_names)
