@@ -1,0 +1,8 @@
+unsloth
+trl
+datasets
+transformers
+torch>=2.0
+pillow
+qwen-vl-utils
+pyyaml

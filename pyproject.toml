@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "qwenvl"
+version = "0.1.0"
+description = "Fine-tuning and inference CLI for Qwen3-VL"
+requires-python = ">=3.10"
+dependencies = [
+    "unsloth",
+    "trl",
+    "datasets",
+    "transformers",
+    "torch",
+    "pillow",
+    "qwen-vl-utils",
+    "pyyaml",
+]
+
+[project.scripts]
+qwenvl-train = "qwenvl.train:main"
+qwenvl-infer = "qwenvl.infer:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
