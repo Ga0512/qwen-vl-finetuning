@@ -8,9 +8,9 @@ version = "0.1.0"
 description = "Fine-tuning and inference CLI for Qwen3-VL"
 requires-python = ">=3.10"
 dependencies = [
-    "unsloth",
-    "trl<0.13",
-    "datasets",
+    "unsloth>=2026.7",
+    "trl>=0.24",
+    "datasets>=4.3",
     "transformers",
     "torch",
     "pillow",

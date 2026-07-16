@@ -1,6 +1,6 @@
-unsloth
-trl<0.13
-datasets
+unsloth>=2026.7
+trl>=0.24
+datasets>=4.3
 transformers
 torch>=2.0
 pillow
