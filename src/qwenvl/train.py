@@ -38,7 +38,7 @@ def main():
     print("Starting training...")
     trainer = SFTTrainer(
         model=model,
-        processing_class=tokenizer,
+        tokenizer=tokenizer,
         train_dataset=dataset,
         args=SFTConfig(
             output_dir=cfg.training.output_dir,
