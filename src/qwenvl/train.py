@@ -40,6 +40,7 @@ def main():
         model=model,
         processing_class=tokenizer,
         train_dataset=dataset,
+        formatting_func=lambda x: x["messages"],
         args=SFTConfig(
             output_dir=cfg.training.output_dir,
             per_device_train_batch_size=cfg.training.per_device_train_batch_size,
